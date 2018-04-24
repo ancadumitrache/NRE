@@ -13,6 +13,7 @@
 using namespace std;
 
 string version = "";
+string data_folder = "../data/";
 
 int output_model = 0;
 
@@ -67,7 +68,7 @@ vector<std::string> nam;
 map<string,vector<int> > bags_train, bags_test;
 
 void init() {
-	FILE *f = fopen("../data/vec.bin", "rb");
+	FILE *f = fopen((data_folder + "vec.bin").c_str(), "rb");
 	fscanf(f, "%d", &wordTotal);
 	fscanf(f, "%d", &dimension);
 	cout<<"wordTotal=\t"<<wordTotal<<endl;
@@ -101,7 +102,7 @@ void init() {
 	wordTotal+=1;
 	fclose(f);
 	char buffer[1000];
-	f = fopen("../data/RE/relation2id.txt", "r");
+	f = fopen((data_folder +  "RE/relation2id.txt").c_str(), "r");
 	while (fscanf(f,"%s",buffer)==1) {
 		int id;
 		fscanf(f,"%d",&id);
@@ -112,7 +113,7 @@ void init() {
 	fclose(f);
 	cout<<"relationTotal:\t"<<relationTotal<<endl;
 	
-	f = fopen("../data/RE/train.txt", "r");
+	f = fopen((data_folder + "RE/train.txt").c_str(), "r");
 	while (fscanf(f,"%s",buffer)==1)  {
 		fscanf(f,"%s",buffer);
 		fscanf(f,"%s",buffer);
@@ -163,7 +164,7 @@ void init() {
 	}
 	fclose(f);
 
-	f = fopen("../data/RE/test.txt", "r");	
+	f = fopen((data_folder + "RE/test.txt").c_str(), "r");	
 	while (fscanf(f,"%s",buffer)==1)  {
 		fscanf(f,"%s",buffer);
 		fscanf(f,"%s",buffer);
