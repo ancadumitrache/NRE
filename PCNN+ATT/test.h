@@ -235,6 +235,7 @@ void test() {
 	double sum_pre = 0;
 	for (int i=0; i<min(2000,int(aa.size())); i++)
 	{
+	  // cout << i << ": " << aa[i].second.first << "; " << min(2000,int(aa.size())) << "\n";
 		if (aa[i].second.first!=0)
 			correct1++;	
 		float precision = correct1/(i+1);
@@ -253,8 +254,8 @@ void test() {
 	}
 	//if (output_flag)
 	{
-		FILE* f = fopen(("out/pr"+version+".txt").c_str(), "w");
-		for (int i=0; i<2000; i++)
+		FILE* f = fopen(("./out/pr"+version+".txt").c_str(), "w");
+		for (int i=0; i<min(2000,int(aa.size())); i++)
 		{
 			//cout<<aa[i].second<<endl;
 			if (aa[i].second.first!=0)
